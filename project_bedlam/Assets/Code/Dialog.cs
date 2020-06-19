@@ -22,7 +22,7 @@ public class Dialog : MonoBehaviour
     }
     void Update()
     {
-        if (textDisplay.text == sentences[index])
+        if (textDisplay.text == sentences[index]) //Text length is same as index, display button
         {
             continueButton.SetActive(true);
         }
@@ -37,10 +37,9 @@ public class Dialog : MonoBehaviour
 
         }
     }
-    public void NextSentence()
+    public void NextSentence() //Gets next sentence
     {
         SentencesLength = sentences.Length;
-        Debug.Log(index);
         continueButton.SetActive(false);
         if (index < sentences.Length - 1)
         {
@@ -51,7 +50,7 @@ public class Dialog : MonoBehaviour
 
         else
         {
-            textDisplay.text = "";
+            textDisplay.text = ""; //Close dialog 
             continueButton.SetActive(false);
             panel.SetActive(false);
             DialogOn = false;   
@@ -60,6 +59,7 @@ public class Dialog : MonoBehaviour
     }
     private void OnTriggerEnter(Collider collision)
     {
+
         if (collision.tag == "Player")
         {
             panel.SetActive(true);

@@ -75,7 +75,7 @@ public class Player : MonoBehaviour
         }
         if (playerCharacter.currentHealth <= 0)
         {
-            Debug.Log("Dead");
+            //Debug.Log("Dead");
             //Death animation
             GameOverPanel.SetActive(true);
         }

@@ -35,7 +35,10 @@ public class Character : MonoBehaviour
     
     void Update()
     {
-   
+    if(currentHealth <= 0)
+        {
+            Destroy(gameObject, 1f);
+        }
     }
  
 
@@ -84,11 +87,7 @@ public class Character : MonoBehaviour
             return false;
         }
     }
-    void Die()
-    {
-        Debug.Log(gameObject.name + "died");
-        Destroy(gameObject);
-    }
+    
     public void Heal(int heal)
     {
         currentHealth += heal;

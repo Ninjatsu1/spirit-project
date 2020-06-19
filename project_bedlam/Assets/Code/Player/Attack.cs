@@ -12,6 +12,7 @@ public class Attack : MonoBehaviour
     public GameObject player;
     
     float step;
+  
     // Update is called once per frame
     void Update()
     {
@@ -26,14 +27,16 @@ public class Attack : MonoBehaviour
                 if (Physics.Raycast(ray, out hit, 100f))
                 {
                     targetPosition = hit.transform.gameObject;
+                    Debug.Log("AAAAA Object postion:" + hit.transform.position);
                     targetFound = true;
                     
                     GameObject clone =
                     Instantiate(iceShard, this.gameObject.transform.position, Quaternion.identity);
-                    iceShard.GetComponent<IceShard>().target = targetPosition.transform.position;
+                    iceShard.GetComponent<IceShard>().target = hit.transform.position;
                     clone.transform.parent = this.transform;
                     targetFound = false;
                     player.GetComponent<Player>().Targeting = false;
+
                 }
                 }
         }

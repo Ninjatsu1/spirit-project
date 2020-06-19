@@ -25,10 +25,7 @@ public class BattleSystem : MonoBehaviour
     Character enemyCharacter;
     public TMP_Text infoDialogue;
     public Ranged ranged;
-    void Start()
-    {
-
-    }
+  
    public IEnumerator SetupBattle()
     {
         enemy.GetComponent<AI_Move>().isMoving = false;
@@ -86,7 +83,6 @@ public class BattleSystem : MonoBehaviour
         }
         else
         {
-            Debug.Log("Player turn");
             state = BattleState.PLAYERTURN;
             PlayerTurn();
         }
