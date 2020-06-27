@@ -5,12 +5,13 @@ using UnityEngine;
 public class Attack : MonoBehaviour
 {
     private GameObject targetPosition;
+    private Vector3 hit_position;
     public GameObject iceShard;
     private GameObject currentPosition;
     public float speed = 1;
     public bool targetFound = false;
     public GameObject player;
-    
+    public LayerMask clickMask;
     float step;
   
     // Update is called once per frame
@@ -24,10 +25,12 @@ public class Attack : MonoBehaviour
                 //Debug.Log("Click");
                 RaycastHit hit;
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                if (Physics.Raycast(ray, out hit, 100f))
+                if (Physics.Raycast(ray, out hit, 100f, clickMask))
                 {
+
                     targetPosition = hit.transform.gameObject;
-                    //Debug.Log("AAAAA Object postion:" + hit.transform.position);
+                    hit_position = hit.point;
+                    Debug.Log(hit.point);
                     targetFound = true;
                     
                     GameObject clone =

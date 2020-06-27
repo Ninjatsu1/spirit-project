@@ -42,38 +42,8 @@ public class Character : MonoBehaviour
     }
  
 
-    private void OnMouseEnter()
-    {
-        if (gameObject.tag != "Player" )
-        {
-            
-            //_HUD_object.SetActive(true);
-            
-        }
-        //Highlight
-       /* if (Player.GetComponent<Player>().Targeting == true)
-        {
-            if (gameObject.tag == "Player")
-            {
-                
-                Debug.Log("Green highlight");
-            }
-            else
-            {
-                Debug.Log("Red");
-
-            }
-
-        }*/
-    }
-    private void OnMouseExit()
-    {
-        if (gameObject.tag != "Player" && BattleSystem.BattleState.OFFCOMBAT.Equals(true))
-        {
-            //_HUD_object.SetActive(false);
-
-        }
-    }
+    
+  
 
     public bool TakeDamage(int amount)
     {

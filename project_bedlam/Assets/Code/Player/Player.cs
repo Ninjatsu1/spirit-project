@@ -6,8 +6,8 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
-  
-    
+
+   public LayerMask clickMask;
     public Button[] AllCurrentSkills;
     private Animator Anim;
     public NavMeshAgent agent; //Player

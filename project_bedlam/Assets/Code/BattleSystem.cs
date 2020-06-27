@@ -25,9 +25,10 @@ public class BattleSystem : MonoBehaviour
     Character enemyCharacter;
     public TMP_Text infoDialogue;
     public Ranged ranged;
-  
+    bool hit;
    public IEnumerator SetupBattle()
     {
+        
         enemy.GetComponent<AI_Move>().isMoving = false;
         HUD_object.SetActive(true);
         //Get characters into battle
@@ -40,16 +41,19 @@ public class BattleSystem : MonoBehaviour
         yield return new WaitForSeconds(1f);
         PlayerTurn();
     }
+    
    public IEnumerator PlayerAttack()
     {
         //Damage the enemy
         //Use skills
-        bool isDead = enemyCharacter.TakeDamage(playerCharacter.baseDamage);
         enemyHUD.SetHealth(enemyCharacter.currentHealth);
-        if (isDead)
+
+        enemyCharacter.TakeDamage(playerCharacter.baseDamage);
+
+        if (enemyCharacter.currentHealth <= 0)
         {
             state = BattleState.WON;
-            EndBattle();
+            StartCoroutine(EndBattle());
             //End battle
         }
         else
@@ -70,6 +74,8 @@ public class BattleSystem : MonoBehaviour
     }
     IEnumerator EnemyTurn()
     {
+        enemyHUD.SetHealth(enemyCharacter.currentHealth);
+
         infoDialogue.text = "Enemy turn";
         yield return new WaitForSeconds(1f);
         bool isDead = playerCharacter.TakeDamage(enemyCharacter.baseDamage);
@@ -91,8 +97,9 @@ public class BattleSystem : MonoBehaviour
     {
         if (state == BattleState.WON)
         {
+            Debug.Log("Won");
             //Battle won
-            HUD_object.SetActive(true);
+            HUD_object.SetActive(false);
             infoDialogue.text = "";
         }
         else if (state == BattleState.LOST)

@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IceShard : Ranged
+public class IceShard : MonoBehaviour
 {
 
     int baseDamage;
     public Vector3 target;
+
     // Update is called once per frame
     void Update()
     {
@@ -20,8 +21,10 @@ public class IceShard : Ranged
         if (other.tag == "Enemy")
         {
             //Vahingoita hahmoa vasta sitten kun osuu
-            // other.gameObject.GetComponent<Character>().TakeDamage(Random.Range(1, 10));
-            other.gameObject.GetComponent<Character>().TakeDamage(5);
+           int damage = Random.Range(1, 5);
+           //other.gameObject.GetComponent<Character>().TakeDamage(5);
+
+            
             Destroy(gameObject, 1f);
 
         }

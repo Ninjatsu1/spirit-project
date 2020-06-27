@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Main_Menu.unity
     guid: f63d774522557864597eb6c5da582814
   - enabled: 1
-    path: Assets/Scenes/taso1.unity
+    path: Assets/Scenes/level1.unity
     guid: bb61cece74da18945983b54a46484fd6
   m_configObjects: {}
