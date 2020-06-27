@@ -27,7 +27,7 @@ public class Attack : MonoBehaviour
                 if (Physics.Raycast(ray, out hit, 100f))
                 {
                     targetPosition = hit.transform.gameObject;
-                    Debug.Log("AAAAA Object postion:" + hit.transform.position);
+                    //Debug.Log("AAAAA Object postion:" + hit.transform.position);
                     targetFound = true;
                     
                     GameObject clone =

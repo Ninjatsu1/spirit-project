@@ -92,6 +92,7 @@ public class BattleSystem : MonoBehaviour
         if (state == BattleState.WON)
         {
             //Battle won
+            HUD_object.SetActive(true);
             infoDialogue.text = "";
         }
         else if (state == BattleState.LOST)

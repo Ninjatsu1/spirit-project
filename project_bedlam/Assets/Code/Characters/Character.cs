@@ -22,7 +22,7 @@ public class Character : MonoBehaviour
 
     public bool targeting;
     [SerializeField]
-    private BattleHUD BattleHUD;
+    private BattleHUD BattleHUD = null;
     [SerializeField]
     private GameObject _HUD_object;
     public BattleSystem BattleSystem;
@@ -51,7 +51,7 @@ public class Character : MonoBehaviour
             
         }
         //Highlight
-        if (Player.GetComponent<Player>().Targeting == true)
+       /* if (Player.GetComponent<Player>().Targeting == true)
         {
             if (gameObject.tag == "Player")
             {
@@ -64,7 +64,7 @@ public class Character : MonoBehaviour
 
             }
 
-        }
+        }*/
     }
     private void OnMouseExit()
     {
