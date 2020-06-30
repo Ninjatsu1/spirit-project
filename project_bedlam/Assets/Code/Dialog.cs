@@ -14,11 +14,13 @@ public class Dialog : MonoBehaviour
     public GameObject panel;
     private int SentencesLength;
     public bool DialogOn = false;
+    private GameObject Player;
+    private Player playerscript;
     private void Start()
     
     {
-
-
+        Player = GameObject.Find("Player");
+        playerscript = Player.GetComponent<Player>();
     }
     void Update()
     {
@@ -29,7 +31,9 @@ public class Dialog : MonoBehaviour
     }
     IEnumerator Type()
     {
-        DialogOn = true;
+        playerscript.dialogOn = true;
+
+
         foreach (char letter in sentences[index].ToCharArray())
         {
             textDisplay.text += letter;
@@ -53,7 +57,8 @@ public class Dialog : MonoBehaviour
             textDisplay.text = ""; //Close dialog 
             continueButton.SetActive(false);
             panel.SetActive(false);
-            DialogOn = false;   
+            playerscript.dialogOn = false;
+
         }
 
     }

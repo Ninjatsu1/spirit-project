@@ -8,7 +8,9 @@ public class DoorSideways : MonoBehaviour
     private GameObject NavMeshLink;
     public bool DoorIsOpen = false;
     private Animator Anim;
-    // Start is called before the first frame update
+    [SerializeField]
+    private float closingTimer;
+    public bool DoorIsLocked = true;
     void Start()
     {
         Anim = GetComponent<Animator>();
@@ -17,13 +19,24 @@ public class DoorSideways : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (DoorIsOpen)
+        {
+            closingTimer += Time.deltaTime;
+            Debug.Log(closingTimer);
+        }
+        if (closingTimer >= 5)
+        {
+            Anim.GetComponent<Animator>().SetBool("DoorIsOpen", false);
+            DoorIsOpen = false;
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player" && DoorIsLocked == false)
         {
             Anim.GetComponent<Animator>().SetBool("DoorIsOpen", true);
+            DoorIsOpen = true;
+
         }
     }
 }

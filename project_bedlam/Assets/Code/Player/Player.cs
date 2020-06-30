@@ -16,14 +16,12 @@ public class Player : MonoBehaviour
     public GameObject MagicSpawn;
     private Character playerCharacter;
     public GameObject GameOverPanel;
+    public bool dialogOn = false;   
     void Start()
     {
-
-
         playerCharacter = GetComponentInChildren<Character>();
         agent = GetComponent<NavMeshAgent>();
         Anim = GetComponent<Animator>();
-      
     }
 
     void Update()
@@ -32,18 +30,17 @@ public class Player : MonoBehaviour
         RaycastHit hit;
         //NavMeshHit nav_hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) )
         {
-            if (Targeting == false)
+            if (dialogOn == false && Targeting == false)
             {
+                Debug.Log(dialogOn);
                 if (EventSystem.current.IsPointerOverGameObject()) //Blocks raycast click over UI
                 {
                     return;
                 }
                 if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
                 {
-
-                    // Debug.Log(NavMesh.SamplePosition(Input.mousePosition, out nav_hit, 10f, NavMesh.AllAreas));
                     agent.destination = hit.point;
                 }
               

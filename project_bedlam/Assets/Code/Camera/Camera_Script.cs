@@ -11,7 +11,7 @@ public class Camera_Script : MonoBehaviour
     public KeyCode CameraKey;
 
     public float CameraSpeed = 10;
-
+    public float rotationSpeed = 10;
     private float zoom;
     // Start is called before the first frame update
     void Start()
@@ -23,11 +23,12 @@ public class Camera_Script : MonoBehaviour
     
     void Update()
     {
-       
+
         
             CameraMove();
+
         //Zoom
-        if (Input.GetAxis("Mouse ScrollWheel") > 0) //In
+       if (Input.GetAxis("Mouse ScrollWheel") > 0) //In
         {
             GetComponent<Camera>();
             GetComponent<Transform>().position = new Vector3(transform.position.x, transform.position.y- 0.3f, transform.position.z + 0.1f);
@@ -50,6 +51,8 @@ public class Camera_Script : MonoBehaviour
             }
             
         }
+        //Rotate
+
 
 
     }
