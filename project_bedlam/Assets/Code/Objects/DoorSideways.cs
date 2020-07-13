@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class DoorSideways : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject NavMeshLink;
-    public bool DoorIsOpen = false;
+    
+    protected bool DoorIsOpen = false;
     private Animator Anim;
     [SerializeField]
     private float closingTimer;
-    public bool DoorIsLocked = true;
+    protected bool DoorIsLocked = true;
     void Start()
     {
         Anim = GetComponent<Animator>();
@@ -19,6 +18,7 @@ public class DoorSideways : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
         if (DoorIsOpen)
         {
             closingTimer += Time.deltaTime;

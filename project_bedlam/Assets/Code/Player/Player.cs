@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
 
-   public LayerMask clickMask;
+    public LayerMask clickMask;
     public Button[] AllCurrentSkills;
     private Animator Anim;
     public NavMeshAgent agent; //Player
@@ -16,7 +16,11 @@ public class Player : MonoBehaviour
     public GameObject MagicSpawn;
     private Character playerCharacter;
     public GameObject GameOverPanel;
-    public bool dialogOn = false;   
+    public bool dialogOn = false;
+
+    public InventoryObject Inventory;
+
+    
     void Start()
     {
         playerCharacter = GetComponentInChildren<Character>();
@@ -78,6 +82,18 @@ public class Player : MonoBehaviour
         }
     }
 
- 
-   
+    public void OnTriggerEnter(Collider other) //Make it clickable later
+    {
+        var item = other.GetComponent<Item>();
+        if (item)
+        {
+            Inventory.AddItem(item.item, 1);
+            Destroy(other.gameObject, 0.5f);
+        }
+    }
+    private void OnApplicationQuit()
+    {
+        Inventory.Container.Clear(); //Clears inventory
+    }
+
 }

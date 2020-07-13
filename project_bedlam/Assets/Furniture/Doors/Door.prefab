@@ -57,8 +57,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 2.1522527, z: 3.0460694}
-  m_Center: {x: 2.2655877e-11, y: -0.99364835, z: -0.21865249}
+  m_Size: {x: 1.149511, y: 2.1522527, z: 3.0460954}
+  m_Center: {x: -0.6277451, y: -0.9936614, z: -0.21865249}
 --- !u!114 &7325748782878746251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,6 +73,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NavMeshLink: {fileID: 0}
   DoorIsOpen: 0
+  closingTimer: 0
 --- !u!1001 &7699491241886754261
 PrefabInstance:
   m_ObjectHideFlags: 0
