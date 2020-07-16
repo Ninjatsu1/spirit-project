@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
         {
             if (dialogOn == false && Targeting == false)
             {
-                Debug.Log(dialogOn);
+                //Debug.Log(dialogOn);
                 if (EventSystem.current.IsPointerOverGameObject()) //Blocks raycast click over UI
                 {
                     return;
@@ -80,6 +80,15 @@ public class Player : MonoBehaviour
             //Death animation
             GameOverPanel.SetActive(true);
         }
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            Inventory.Save();
+        }
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            Inventory.Load();
+        }
+   
     }
 
     public void OnTriggerEnter(Collider other) //Make it clickable later

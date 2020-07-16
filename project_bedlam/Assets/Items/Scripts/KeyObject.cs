@@ -1,18 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
-
-public class KeyObject : MonoBehaviour
+[CreateAssetMenu(fileName ="New_Key_object", menuName ="Inventory_System/Keys")]
+public class KeyObject : ItemObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+
+    public void Awake()
     {
-        
+        type = ItemType.Keys;
     }
 }

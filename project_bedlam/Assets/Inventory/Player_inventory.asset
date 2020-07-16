@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Player_inventory
   m_EditorClassIdentifier: 
   Container: []
+  savePath: /inventory/save
