@@ -3,13 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using UnityEditor;
 
 [CreateAssetMenu(fileName = "New_Inventory", menuName ="Inventory_System/Inventory")]
 public class InventoryObject : ScriptableObject, ISerializationCallbackReceiver
 {
-    public ItemDatabaseObject database;
+    private ItemDatabaseObject database;
     public List<InventorySlot> Container = new List<InventorySlot>();
     public string savePath;
+    private void OnEnable()
+    {
+#if UNITY_EDITOR
+        database = (ItemDatabaseObject)AssetDatabase.LoadAssetAtPath("Assets/Resources/Database.asset", typeof(ItemDatabaseObject));
+#else
+        database = Resources.Load<ItemDatabaseObject>("Database");
+#endif
+    }
     public void AddItem(ItemObject _item, int _amount)
     {
         for (int i = 0; i < Container.Count; i++)
@@ -24,7 +33,7 @@ public class InventoryObject : ScriptableObject, ISerializationCallbackReceiver
        Container.Add(new InventorySlot(database.GetId[_item], _item, _amount));
         
     }
-    public void Save()
+    public void Save() //Kutsu tätä funktiota kun pelaaja ottaa uuden itemin
     {
         string saveData = JsonUtility.ToJson(this, true);
         Debug.Log(saveData);
