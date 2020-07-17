@@ -85,6 +85,7 @@ public class Player : MonoBehaviour
             inventoryOn = !inventoryOn;
             if (inventoryOn)
             {
+                Inventory.Load();
                 InventoryUI.SetActive(true);
             }
             else
@@ -110,6 +111,7 @@ public class Player : MonoBehaviour
         if (item)
         {
             Inventory.AddItem(item.item, 1);
+            Inventory.Save();
             Destroy(other.gameObject, 0.5f);
         }
     }
