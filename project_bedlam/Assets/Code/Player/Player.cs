@@ -19,8 +19,8 @@ public class Player : MonoBehaviour
     public bool dialogOn = false;
 
     public InventoryObject Inventory;
-
-    
+    public GameObject InventoryUI;
+    private bool inventoryOn = false;
     void Start()
     {
         playerCharacter = GetComponentInChildren<Character>();
@@ -82,12 +82,25 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.I))
         {
+            inventoryOn = !inventoryOn;
+            if (inventoryOn)
+            {
+                InventoryUI.SetActive(true);
+            }
+            else
+            {
+                InventoryUI.SetActive(false);
+            }
+        }
+        
+        /*if (Input.GetKeyDown(KeyCode.I))
+        {
             Inventory.Save();
         }
         if (Input.GetKeyDown(KeyCode.J))
         {
             Inventory.Load();
-        }
+        }*/
    
     }
 
