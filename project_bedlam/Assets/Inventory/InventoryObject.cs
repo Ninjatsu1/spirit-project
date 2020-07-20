@@ -33,6 +33,24 @@ public class InventoryObject : ScriptableObject, ISerializationCallbackReceiver
        Container.Add(new InventorySlot(database.GetId[_item], _item, _amount));
         
     }
+    public void DeleteItem(ItemObject _item, int _amount)
+    {
+        for (int i = 0; i < Container.Count; i++)
+        {
+            if (Container[i].item == _item)
+            {
+                Container[i].DecreaseAmount(_amount);
+                return;
+            }
+            if (Container[i].amount == 0)
+            {
+                Container.Remove(new InventorySlot(database.GetId[_item], _item, _amount));
+
+            }
+
+        }
+
+    }
     public void Save() //Kutsu tätä funktiota kun pelaaja ottaa uuden itemin
     {
         string saveData = JsonUtility.ToJson(this, true);
@@ -52,6 +70,8 @@ public class InventoryObject : ScriptableObject, ISerializationCallbackReceiver
             file.Close();
         }
     }
+  
+
     public void OnAfterDeserialize()
     {
         for(int i = 0; i < Container.Count; i++)
@@ -80,5 +100,9 @@ public class InventorySlot
     public void AddAmount(int value)
     {
         amount += value;
+    }
+    public void DecreaseAmount(int value)
+    {
+        amount -= value;
     }
 }

@@ -2452,6 +2452,7 @@ MonoBehaviour:
   GameOverPanel: {fileID: 1722627806}
   dialogOn: 0
   Inventory: {fileID: 11400000, guid: 119939635870db84da3e95b52fdab983, type: 2}
+  InventoryUI: {fileID: 892815606}
 --- !u!4 &308895345 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400168, guid: b235179bd2a63d1468dd430670338c55,
@@ -2674,7 +2675,7 @@ PrefabInstance:
     - target: {fileID: 5830180454649130154, guid: 2407ae3a803df024dbb3997c428afc18,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.97
+      value: 6.92
       objectReference: {fileID: 0}
     - target: {fileID: 5830180454649130154, guid: 2407ae3a803df024dbb3997c428afc18,
         type: 3}
@@ -7630,7 +7631,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &892815607
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -38,11 +38,12 @@ public class Player : MonoBehaviour
         {
             if (dialogOn == false && Targeting == false)
             {
-                //Debug.Log(dialogOn);
+
                 if (EventSystem.current.IsPointerOverGameObject()) //Blocks raycast click over UI
                 {
                     return;
                 }
+
                 if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
                 {
                     agent.destination = hit.point;
@@ -50,6 +51,9 @@ public class Player : MonoBehaviour
               
             }
 
+          
+              
+            
         }
         if (Input.GetMouseButtonDown(1))
         {
@@ -57,6 +61,7 @@ public class Player : MonoBehaviour
             {
                 return;
             }
+         
             Debug.Log("Targeting canceled");
             Targeting = false; //Cancel target
         }
@@ -92,17 +97,7 @@ public class Player : MonoBehaviour
             {
                 InventoryUI.SetActive(false);
             }
-        }
-        
-        /*if (Input.GetKeyDown(KeyCode.I))
-        {
-            Inventory.Save();
-        }
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            Inventory.Load();
-        }*/
-   
+        } 
     }
 
     public void OnTriggerEnter(Collider other) //Make it clickable later
