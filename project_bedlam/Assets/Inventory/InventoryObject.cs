@@ -41,12 +41,10 @@ public class InventoryObject : ScriptableObject, ISerializationCallbackReceiver
             {
                 Container[i].DecreaseAmount(_amount);
                 return;
+            
             }
-            if (Container[i].amount == 0)
-            {
-                Container.Remove(new InventorySlot(database.GetId[_item], _item, _amount));
+           
 
-            }
 
         }
 
