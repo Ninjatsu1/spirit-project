@@ -12,10 +12,8 @@ public class Character : MonoBehaviour
     public int MaxHealth;
     public int currentHealth;
     public int baseDamage;
-    public int Characterlevel;
-    
-    public int armour;
-    public bool sleeping = false;
+    public int CharacterLevel;
+    public int level;
     //public string CharacterAlliance;
     public GameObject Player = null;
     public HealthBar healthBar;

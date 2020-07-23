@@ -40,10 +40,18 @@ public class InventoryObject : ScriptableObject, ISerializationCallbackReceiver
             if (Container[i].item == _item)
             {
                 Container[i].DecreaseAmount(_amount);
-                return;
-            
+               
             }
-           
+            if (Container[i].amount <= 0)
+            {
+               //Debug.Log(Container.Remove(new InventorySlot(Container[i].ID, _item, _amount)));
+                InventorySlot newSlot = new InventorySlot(Container[i].ID, _item, _amount);
+                Debug.Log(newSlot.item);
+                Debug.Log(Container.Remove(newSlot));
+
+                Container.Remove(newSlot);
+               
+            }
 
 
         }
@@ -52,7 +60,7 @@ public class InventoryObject : ScriptableObject, ISerializationCallbackReceiver
     public void Save() //Kutsu tätä funktiota kun pelaaja ottaa uuden itemin
     {
         string saveData = JsonUtility.ToJson(this, true);
-        Debug.Log(saveData);
+        //Debug.Log(saveData);
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(string.Concat(Application.persistentDataPath, savePath));
         bf.Serialize(file, saveData);

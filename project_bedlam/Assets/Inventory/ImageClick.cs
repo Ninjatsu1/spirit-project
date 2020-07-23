@@ -11,7 +11,7 @@ public class ImageClick : MonoBehaviour
     {
         var item = GetComponent<Item>();
 
-        Debug.Log(item);
+        //Debug.Log(item);
         Inventory.DeleteItem(item.item, 1);
         Inventory.Save();
     }
